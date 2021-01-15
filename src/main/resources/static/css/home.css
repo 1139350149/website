@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.theme{
+    margin: 20px;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+
+.description{
+    line-height: 36px;
+    margin: 5px 20px;
+    padding: 5px 20px;
+    font-size: 24px;
+    font-weight: revert;
+}
+
+.logo{
+    margin: 20px;
+    padding: 20px;
+    max-width: 100%;
+}
+
+.version{
+    padding: 10px;
+    margin: 20px;
+    font-size: 36px;
+    letter-spacing: 10px;
+}
+
+.start{
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    z-index: 1000;
+}
+
+.start button{
+    cursor: pointer;
+}
+
+#background{
+    position: absolute;
+    z-index: -1;
+}
+
+.category-shadow{
+    box-shadow: 1px 2px 2px #1b1e21;
+}
+
+.category-title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.category-description{
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.conclusion{
+    margin: 10px;
+    padding: 20px;
+}
+
+.conclusion > p{
+    padding: 30px;
+    color: #434343;
+    font-size: 30px;
+    font-weight: 500;
+}

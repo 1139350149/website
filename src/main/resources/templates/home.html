@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <!--<script src="javaScript/bootstrap.min.js" type="text/javascript" language="JavaScript"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"-->
+            <!--integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"-->
+            <!--crossorigin="anonymous"></script>-->
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"-->
+            <!--integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"-->
+            <!--crossorigin="anonymous"></script>-->
+    <!--<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"-->
+            <!--integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"-->
+            <!--crossorigin="anonymous"></script>-->
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/home.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body>
+<nav th:replace="header :: header (loginUser=${session.loginUser})"></nav>
+<div class="main">
+    <div id="background"></div>
+    <div class="container-fluid head">
+        <div class="row row-cols-3">
+            <div class="col-md-6 offset-1 order-md-1">
+                <p class="theme">
+                    Data structure refers to the collection of data elements with one or more relationships among
+                    each other
+                    and the relationship between data elements in the collection.
+                </p>
+                <p class="description text-secondary">
+                    Common data structures are: <strong>Array</strong>, <strong>Stack</strong>,
+                    <strong>Linked List</strong>, <strong>Queue</strong>, <strong>Binary Tree</strong>,
+                    <strong>Graph</strong>, <strong>Heap</strong>
+                </p>
+            </div>
+            <div class="col-md-4 order-md-2">
+                <img th:src="@{/resource/logo_large.png}" class="logo" alt="logo">
+            </div>
+        </div>
+        <div class="start">
+            <a class="btn btn-success btn-lg" th:href="@{/userBlog}" type="button">Get Start</a>
+            <p class="text-center version">Currently v1.0</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-cols-3">
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/sorting.gif}" alt="sorting" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Sort</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#sort">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="sort">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            Sorting is a common operation in computers, which aims to adjust a "disordered"
+                            sequence of records to a "ordered" one.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/bst.gif}" alt="Tree" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Tree</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#tree">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="tree">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            The tree is a data structure consisting of n (n>=1) finite nodes forming a set
+                            with hierarchical relationships.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/heap.gif}" alt="Heap" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Heap</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#heap">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="heap">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            The heap is a special data structure that can be thought of as an array object of a tree.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/list.gif}" alt="List" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Linked List</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#list">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="list">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            The linked list is a discontinuous, non-sequential storage structure on the physical
+                            storage unit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/graphds.gif}" alt="Graph" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Graph</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#graph">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="graph">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            The graph is composed of the finite set V of nodes and the set E of edges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img class="category-shadow" th:src="@{/resource/hashtable.gif}" alt="Graph" width="50%" height="50%">
+                    </p>
+                    <p class="text-center  category-title">Hash Table</p>
+                    <p class="text-center">
+                        <a class="btn btn-outline-success" data-toggle="collapse" role="button" href="#hash">More</a>
+                    </p>
+                </div>
+                <div class="collapse" id="hash">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            The hash table, also known as a hash table, is a data structure accessed directly from
+                            key codes and values (key and value) that map to a location in a collection
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid conclusion">
+        <p class="text-center">
+            Come on and start your wonderful journey!
+        </p>
+    </div>
+</div>
+<footer th:include="footer :: footer"></footer>
+</body>
+</html>

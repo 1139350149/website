@@ -1,0 +1,190 @@
+.background-login-or-register {
+    background: url("../resource/sky-background.png") no-repeat center top;
+    height: 100%;
+    background-size: cover;
+    z-index: 3;
+    overflow-x: hidden;
+}
+
+.common-container {
+    padding: 10px 0;
+    margin: 10px 0;
+    position: relative;
+    border-bottom: 2px solid #cccccc;
+    border-radius: 0;
+}
+
+.common-special-label {
+    color: #cccccc;
+    position: absolute;
+    font-size: 14px;
+    bottom: 30px;
+}
+
+.common-label {
+    color: #cccccc;
+    position: absolute;
+    font-size: 20px;
+}
+
+.common-input {
+    font-size: 20px;
+    position: relative;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    width: 90%;
+    color: #343a40;
+}
+
+.common-line {
+    position: absolute;
+    height: 2px;
+    background-color: lawngreen;
+    width: 0;
+    bottom: -2px;
+}
+
+.common-hint {
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: darkblue;
+    height: 30px;
+    width: 30px;
+    display: inline-block;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 30px;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.common-submit-container {
+    padding: 20px 0;
+    margin: 30px 0 10px;
+}
+
+.common-help {
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.common-help > a {
+    text-decoration: none;
+    color: #BB501C;
+}
+
+.common-copyright > ul {
+    list-style: none;
+}
+
+.common-copyright > ul > li {
+    display: inline-block;
+    padding: 5px;
+}
+
+.common-copyright > ul > li:first-child:before {
+    content: "";
+}
+
+.common-copyright > ul > li:before {
+    content: "|";
+}
+
+#stars {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 4;
+}
+
+.star {
+    position: absolute;
+    opacity: 0;
+    z-index: 5;
+}
+
+.star::after {
+    content: "";
+    display: block;
+    border: solid;
+    border-width: 1px 0 1px 50px;
+    /*流星随长度逐渐缩小*/
+    border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+    border-radius: 2px 0 0 2px;
+    transform: rotate(-45deg);
+    transform-origin: 0 0 0;
+    box-shadow: 2px 2px 6px rgba(255, 255, 255, .3);
+}
+
+.hide-condition {
+    display: none;
+}
+
+.send {
+    display: none;
+    position: absolute;
+    width: 300px;
+    background: rgba(169, 169, 169, 0.4);
+    border-radius: 5px; /* 圆角 */
+    padding: 10px;
+    margin: 10px auto 10px;
+}
+
+.send::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: -16px; /* 圆角的位置需要细心调试哦 */
+    width: 0;
+    height: 0;
+    font-size: 0;
+    border: solid 8px;
+    border-color: transparent rgba(169, 169, 169, 0.4) transparent transparent;
+}
+
+.input-condition-hint{
+    line-height: 20px;
+}
+
+.hint-icon{
+    display: inline;
+}
+
+.hint-content {
+    display: inline;
+    font-size: x-small;
+    vertical-align: middle;
+}
+
+.author{
+    cursor: pointer;
+}
+
+.author:hover{
+    color: #F5DEB3;
+}
+
+.time-stamp{
+    cursor: pointer;
+    color: #cccccc;
+}
+
+.time-stamp:hover{
+    color: #000000;
+}
+
+.modifyBlog{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.modifyBlog:hover{
+    text-decoration: none;
+    color: #F5DEB3;
+}
+
+.display-none{
+    display: none;
+}

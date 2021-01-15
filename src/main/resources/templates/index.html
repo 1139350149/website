@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
+<div class="main container blog-area">
+    <div class="blog-head">
+        <h2 class="text-center"><strong>博客专栏</strong></h2>
+    </div>
+
+    <div class="blog-body">
+
+        <div class="blog-card" th:each="blog: ${blogAll}">
+            <a class="blog-title" th:text="${blog.title}" th:href="@{/viewBlog(blogId=${blog.blogId})}"></a>
+            <p class="blog-content" th:text="${blog.body}">
+
+            </p>
+            <div class="blog-info text-right">
+                <span class="author" th:text="${blog.author}"></span>
+                <span class="time-stamp" th:text="${blog.timeStamp}"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

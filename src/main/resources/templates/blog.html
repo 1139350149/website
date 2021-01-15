@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="icon" th:href="@{/resource/logo_red.png}">
+
+    <link th:href="@{/css/userBlog.css}" rel="stylesheet" type="text/css" >
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" >
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
+<div class="container user-blog main">
+    <div class="title">
+        <h2><strong th:text="${title}"></strong></h2>
+    </div>
+    <div class="page-copyright">
+        <p class="author" th:text="${author}"></p>
+        <p class="time-stamp" th:text="${timeStamp}"></p>
+    </div>
+    <div class="content">
+        <p th:each="p : ${paragraph}" class="paragraph" th:text="${p}"></p>
+    </div>
+    <p class="paragraph text-right time-stamp" th:text="全文共 + ${len} + 字"></p>
+</div>
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

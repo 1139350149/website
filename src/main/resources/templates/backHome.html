@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/home.css}">
+    <!--<script src="javaScript/bootstrap.min.js" type="text/javascript" language="JavaScript"></script>-->
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/home.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
+<div class="main">
+    <div id="background"></div>
+    <div class="container-fluid head">
+        <div class="row row-cols-3">
+            <div class="col-md-6 offset-1 order-md-1">
+                <p class="theme">
+                    书写你的个人博客
+                </p>
+                <p class="description text-secondary">
+                    在这里你可以分享你的<strong>生活</strong>,<strong>知识</strong>,<strong>想法</strong>。
+                    <br>
+                    以铜为镜，可以正衣冠；以史为镜，可以知兴替；以人为镜，可以明得失。
+                    <br>
+                    希望在这里你也可以见到更好的自己。
+                </p>
+            </div>
+            <div class="col-md-4 order-md-2">
+                <img th:src="@{/resource/logo_large.png}" class="logo" alt="logo">
+            </div>
+        </div>
+        <div class="start">
+            <a class="btn btn-success btn-lg" th:href="@{/index}" type="button">开始你的博客之旅</a>
+            <p class="text-center version">在这里，你可以</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row row-cols-3">
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img th:src="@{/resource/category1.png}" alt="分享" width="auto" height="75px">
+                    </p>
+                    <p class="text-center category-title">分享</p>
+                </div>
+                <div id="sort">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            将您的经历，技术与他人分享
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img th:src="@{/resource/category2.png}" alt="发表" width="auto" height="75px">
+                    </p>
+                    <p class="text-center category-title">发表</p>
+                </div>
+                <div id="tree">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            在这里畅所欲言，发表自己的想法
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img th:src="@{/resource/category3.png}" alt="搜索" width="auto" height="75px">
+                    </p>
+                    <p class="text-center  category-title">搜索</p>
+                </div>
+                <div id="heap">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            搜索感兴趣的事，学习关注的技术
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="offset-md-4 col-md-4">
+                <div>
+                    <p class="text-center">
+                        <img th:src="@{/resource/category4.png}" alt="评论" width="auto" height="75px">
+                    </p>
+                    <p class="text-center  category-title">评论</p>
+                </div>
+                <div id="list">
+                    <div class="card card-body">
+                        <p class="text-center category-description">
+                            在别人的博文下发表自己的评论，与他人交流想法
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container-fluid conclusion">
+        <p class="text-center">
+            开始你的博客之旅！
+        </p>
+    </div>
+</div>
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

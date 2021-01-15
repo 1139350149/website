@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+    <link rel="icon" th:href="@{/resource/logo.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
+
+<div class="main container blog-area">
+
+    <div class="blog-head">
+        <h2 class="text-center"><strong>我的博客</strong></h2>
+    </div>
+
+    <div class="blog-body">
+        <div class="blog-card" th:each="blog : ${blogsByAuthor}">
+            <a class="blog-title" th:href="@{/viewBlog(blogId=${blog.blogId})}" th:text="${blog.title}">
+            </a>
+            <p class="blog-content" th:text="${blog.body}">
+            </p>
+            <div class="blog-info text-right">
+                <span class="time-stamp" th:text="${blog.timeStamp}"></span>
+            </div>
+            <div class="blog-info text-right">
+                <a class="modifyBlog" th:href="@{/changeBlog(blogId=${blog.blogId})}" >更改内容</a>
+                <a class="modifyBlog" th:href="@{/deleteBlog(blogId=${blog.blogId})}" >删除博客</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

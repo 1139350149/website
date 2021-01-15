@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" th:href="@{/resource/logo_red.png}">
+    <title>登录</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/login.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/common.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/login.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body class="background-login-or-register">
+<div id="stars"></div>
+<div class="login-container">
+    <h2 class="login-title">账号登录</h2>
+    <form th:action="@{/login_data}" method="post">
+        <div class="common-container">
+            <label class="common-label">用户名</label>
+            <input class="common-input" type="text" name="username">
+            <div class="common-line"></div>
+            <span class="text-center common-hint">i</span>
+            <span id="username-hint" class="send">
+                忘记了密码？使用您的邮箱<a class="login-send-hint" href="">找回用户名</a>
+            </span>
+        </div>
+
+        <div class="common-container">
+            <label class="common-label">密码</label>
+            <input class="common-input" type="password" name="password">
+            <div class="common-line"></div>
+            <span class="text-center common-hint">i</span>
+            <span id="password-hint" class="send">
+                忘记了密码？<a class="login-send-hint" href="">找回密码</a>
+            </span>
+        </div>
+
+        <div class="common-container">
+            <label class="common-label">验证码</label>
+            <input id="validation-code-input" class="common-input" type="text" name="validationCode">
+            <div class="common-line"></div>
+            <span id="validation-image-container">
+                <img id="validation-image" width="150" height="auto" src="" alt="验证码" />
+            </span>
+        </div>
+
+        <div id="validation-code-hint" class="input-condition-hint hide-condition">
+            <img class="hint-icon" src="" width="15" height="15" alt="正确">
+            <p class="hint-content">gugu</p>
+        </div>
+
+        <div class="common-submit-container text-center">
+            <input class="login-submit" type="submit" value="登录">
+        </div>
+        <p class="common-help text-center">
+            <a th:href="@{/help}">需要帮助？</a>
+        </p>
+    </form>
+</div>
+<div class="text-center help-container">
+    <h2 class="login-title">没有xxx账户？</h2>
+    <div class="login-register-submit-container">
+        <a type="button" class="btn login-register" th:href="@{/register}">注册账户</a>
+    </div>
+    <div class="common-copyright text-center">
+        <ul>
+            <li>© xxx 2020</li>
+            <li><sup>TM</sup>1139350149@qq.com</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
