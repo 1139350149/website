@@ -22,7 +22,7 @@ public class Blog {
     private String title;
 
     @NotNull
-    @Column(name="body", length = 2000)
+    @Column(name="body", length = 12000)
     private String body;
 
     @Column(name="timeStamp", length=20)

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>writeBlog</title>
+    <link rel="icon" th:href="@{/resource/logo_red.png}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/userBlog.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/writeBlog.css}">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/writeBlog.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body>
+<nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
+<div class="main">
+    <h1 class="text-center"><strong>预览模式</strong></h1>
+    <div class="container-fluid row">
+        <div class="col-md-6">
+            <form th:action="@{/uploadBlog}" method="post" th:if="${mod} == 1">
+                <div class="write-area">
+                    <div class="write-title text-center">
+                        <input id="title" name="title" placeholder="请输入标题（不多于30字且不为空）">
+                    </div>
+                    <div class="write-body text-center">
+                        <textarea id="body" name="body" placeholder="请输入正文（不多于2000字且不为空）"></textarea>
+                    </div>
+                    <div class="submit-area">
+                        <input class="btn btn-success btn-lg" type="submit" value="发布">
+                    </div>
+                </div>
+
+            </form>
+            <form th:action="@{/changingBlog}" method="post" th:if="${mod} == 2">
+                <div class="write-area">
+                    <div class="write-title text-center">
+                        <input id="title" name="title" th:value="${changingBlog.title}">
+                    </div>
+                    <div class="write-body text-center">
+                        <textarea id="body" name="body" th:text="${changingBlog.body}"></textarea>
+                    </div>
+                    <input class="display-none" name="blogId" th:value="${changingBlog.blogId}" >
+                    <div class="submit-area">
+                        <input class="btn btn-success btn-lg" type="submit" value="更改">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="container-fluid user-blog" id="blog-preview">
+                <div class="title">
+                    <h2><strong id="title-preview"></strong></h2>
+                </div>
+                <div class="page-copyright">
+                    <p class="author" th:text="${session.loginUser}"></p>
+                    <p class="time-stamp" id="time-stamp">
+                    </p>
+                </div>
+                <div class="content" id="content">
+                    <p class="paragraph">
+
+                    </p>
+                </div>
+
+                <p class="paragraph text-right time-stamp" id="characterAmount"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<footer th:include="backFooter :: backFooter"></footer>
+</body>
+</html>

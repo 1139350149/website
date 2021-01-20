@@ -1,0 +1,44 @@
+.write-title{
+    margin: 0 20px 20px 20px;
+}
+
+.write-body{
+    margin: 0 20px;
+}
+
+.write-area{
+    background-color: #F5F5F5;
+    min-height: 600px;
+}
+
+#title{
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid #F5F5F5;
+    background-color: #ffffff;
+    font-size: 24px;
+    border-radius: 5px ;
+}
+
+#body{
+    padding: 10px;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #ffffff;
+    font-size: 24px;
+    border-radius: 5px ;
+    min-height: 400px;
+}
+
+#blog-preview{
+    min-height: 600px;
+}
+
+.submit-area{
+    padding: 20px;
+    text-align: center;
+}

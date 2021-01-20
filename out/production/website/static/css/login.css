@@ -1,0 +1,75 @@
+.login-container{
+    position: relative;
+    width: 30%;
+    background-color: rgba(252, 251, 250, 0.45);
+    padding: 20px;
+    margin: 5% auto 2%;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.help-container{
+    position: relative;
+    width: 30%;
+    background-color: rgba(252, 251, 250, 0.45);
+    margin: 2% auto 5%;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 10;
+}
+
+.login-title{
+    margin: 10px;
+    text-align: center;
+}
+
+.login-submit{
+    background-color: rgb(49, 36, 39);
+    color: #ffffff;
+    font-size: larger;
+    padding: 10px 5%;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    box-shadow: #000000 1px 2px 2px;
+    width: 90%;
+}
+
+.login-submit:hover{
+    background-color: rgb(84, 90, 88);
+}
+
+.login-register{
+    font-size: x-large;
+    width: 90%;
+    padding: 10px 5%;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.login-register:hover{
+    background-color: rgb(241, 240, 235);
+}
+
+.login-register-submit-container{
+    padding: 10px 0;
+    margin: 30px auto;
+}
+
+.login-send-hint{
+    color: #ffffff;
+}
+
+.login-send-hint:hover{
+    color: lightcyan;
+    text-decoration: none;
+}
+
+#validation-image-container{
+    position: absolute;
+    display: block;
+    right: 2px;
+    top: 2px;
+    line-height: 34px;
+}

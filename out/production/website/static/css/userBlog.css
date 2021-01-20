@@ -1,0 +1,25 @@
+.user-blog{
+    background-color: #F5F5F5;
+    padding: 10px 0;
+}
+
+.page-copyright{
+    padding: 10px 20px;
+
+}
+
+.title{
+    padding: 20px;
+}
+
+.content{
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.paragraph{
+    text-indent: 2em;
+    line-height: 30px;
+    font-size: 18px;
+}

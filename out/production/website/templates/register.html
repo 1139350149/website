@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" th:href="@{/resource/logo_red.png}">
+    <title>注册</title>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/register.css}" rel="stylesheet" type="text/css">
+    <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/common.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/register.js}" type="text/javascript" language="JavaScript"></script>
+</head>
+<body class="background-login-or-register">
+<div id="register-hint" class="alert alert-success register-hint">您现在可以注册账号了！</div>
+<div id="stars"></div>
+<div class="register-container">
+    <h2 class="register-title">创建您的 xxx 账户</h2>
+    <h5 class="register-title common-help">已有 xxx 账户？<a th:href="@{/login}">登录</a></h5>
+
+    <hr class="register-divider">
+
+    <form th:action="@{/register_data}" method="post">
+        <div class="row row-cols-3">
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">用户名*</label>
+                    <input id="username" class="common-input" type="text" name="username">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+
+            <div id="username-hint" class="offset-md-2 col-md-5 input-condition-hint hide-condition">
+                <img class="hint-icon" src="" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">电子邮箱地址*</label>
+                    <input id="email" class="common-input" type="text" name="email">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+
+            <div id="email-hint" class="offset-md-2 col-md-10 input-condition-hint hide-condition">
+                <img class="hint-icon" src="" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">密码*</label>
+                    <input id="password" class="common-input" type="text" name="password">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="desc-container">
+                    <p class="register-category-desc">
+                        6-20个字符(至少1个字母，1个数字)，仅支持字母与数字
+                    </p>
+                </div>
+            </div>
+
+            <div id="password-hint" class="offset-md-2 col-md-10 input-condition-hint hide-condition">
+                <img class="hint-icon" src="" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">确认密码*</label>
+                    <input id="confirm_password" class="common-input" type="text" name="confirm_password">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+
+            <div id="confirm-password-hint" class="offset-md-2 col-md-10 input-condition-hint hide-condition">
+                <img class="hint-icon" src="" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-special-label">性别*</label>
+                    <select class="common-input" name="sex">
+                        <option value="" disabled="disabled">-选择-</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                        <option value="secret" selected="selected">保密</option>
+                    </select>
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5"></div>
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">注册码(非必填项)</label>
+                    <input id="register-code" class="common-input" type="text" name="registerCode">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="desc-container">
+                    <p class="register-category-desc">
+                        一个注册码只能注册一次嗷
+                    </p>
+                </div>
+            </div>
+
+            <div id="register-code-hint" class="offset-md-2 col-md-10 input-condition-hint hide-condition">
+                <img class="hint-icon" src="/resource/correct.png" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+
+
+            <div class="offset-md-2 col-md-5">
+                <div class="common-container">
+                    <label class="common-label">验证码(大小写不敏感)*</label>
+                    <input id="verify-code" class="common-input" type="text" name="verifyCode">
+                    <div class="common-line"></div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="desc-container">
+                    <a type="button" id="get-code" class="register-submit">
+                        获取验证码
+                    </a>
+                </div>
+            </div>
+
+            <div id="verify-code-hint" class="offset-md-2 col-md-10 input-condition-hint hide-condition">
+                <img class="hint-icon" src="/resource/correct.png" width="15" height="15" alt="正确">
+                <p class="hint-content"></p>
+            </div>
+        </div>
+
+        <hr class="register-divider">
+
+        <div class="common-submit-container text-center">
+            <input id="register-submit" class="register-submit" type="submit" value="注册">
+        </div>
+
+        <span id="submit-hint" class="send">当前不满足注册条件!</span>
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.blog-head{
+    padding: 20px;
+    margin: 10px;
+}
+
+.blog-body{
+    padding: 10px;
+    background-color: rgb(245, 246, 247);
+}
+
+.blog-card{
+    padding: 10px;
+    border-bottom: 1px solid #F4F4F4;
+    background-color: #FFFFFF;
+}
+
+.blog-title{
+    color: rgb(61, 61, 61);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+}
+
+.blog-title:hover {
+    color: rgb(252, 85, 49);
+    text-decoration: none;
+}
+
+.blog-content{
+    color: rgb(138, 138, 138);
+    font-size: 14px;
+    text-indent: 2em;
+    line-height: 24px;
+}
+
+.blog-area{
+    min-height: 600px;
+}
