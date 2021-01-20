@@ -35,7 +35,6 @@ public class BlogController {
      */
     @RequestMapping("/writeBlog")
     String writeBlog(Model model) {
-        model.addAttribute("mod", 1);
         return "writeBlog.html";
     }
 
@@ -72,9 +71,6 @@ public class BlogController {
     @RequestMapping("/userInfo")
     String userInfo(HttpSession session, Model model) {
         String user = (String) session.getAttribute("loginUser");
-//        if (null == user) {
-//            return "redirect:/login.html";
-//        }
         System.out.println(user);
 
         ArrayList<Blog> res = blogRepository.findBlogsByAuthor(user);
@@ -103,8 +99,7 @@ public class BlogController {
     String change(@RequestParam String blogId, Model model) {
         Blog blog = blogRepository.findBlogByBlogId(Integer.valueOf(blogId));
         model.addAttribute("changingBlog", blog);
-        model.addAttribute("mod", 2);
-        return "writeBlog";
+        return "changeBlog.html";
     }
 
     /*

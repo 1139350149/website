@@ -1,10 +1,7 @@
 function editorFunction() {
     var functionButtons = $(".editor-controller-button");
-
     var uploadPicture = $("#uploadPicture");
-
     var fileContainer = $("#file-container");
-
 
     functionButtons.on("click", function () {
         var command = $(this).data('command');
@@ -25,102 +22,155 @@ function editorFunction() {
 
     uploadPicture.on("change", function () {
         var file = $(this).prop("files");
-        console.log(file);
-        /* 构建上传文件的缩略图板块
+        if(file === undefined){
+            return false;
+        }
+
+        if (file[0].size> 10 * 1024 * 1024){
+            toast("图片过大", "图片过大，禁止上传", "info");
+            return false;
+        }
+
+        generateImgContainer(file, fileContainer);
+    })
+}
+
+function generateImgContainer(file, fileContainer){
+    /* 构建上传文件的缩略图板块
          *
          */
-        var imgContainer = $('<div class="img-container text-center"></div>');
-        var formData = new FormData();
-        formData.append("uploadPicture", file[0]);
-        var img = $('<img class="img" title="' + file[0].name + '" src="../resource/loading.gif">');
-        imgContainer.append(img);
+    var imgContainer = $('<div class="img-container text-center"></div>');
+    var formData = new FormData();
+    formData.append("uploadPicture", file[0]);
+    var img = $('<img class="img" title="' + file[0].name + '" src="../resource/loading.gif" />');
+    imgContainer.append(img);
+    var progress = $('<div class="progress"></div>');
+    var progressBar = $('<div class="progress-bar progress-bar-striped bg-success"></div>');
+    progress.append(progressBar);
+    imgContainer.append(progress);
+    var progressValue = $('<p class="progress-value"></p>');
+    imgContainer.append(progressValue);
 
-        var progress = $('<div class="progress"></div>');
-        var progressBar = $('<div class="progress-bar progress-bar-striped bg-success"></div>');
+    $.ajax({
+        type: "post",
+        url: "uploadPicture",
+        async: true,
+        data: formData,
+        cache: false,
+        processData: false,
+        contentType: false,
+        xhr: function () {
+            var xhr = $.ajaxSettings.xhr();
+            if (xhr.upload) {
+                xhr.upload.addEventListener('progress', function (e) {
+                    var percentage = parseInt(e.loaded / e.total * 100);
+                    progressValue.text(percentage + '%');
+                    progressBar.css("width", percentage + '%');
+                });
+            }
+            return xhr;
+        },
+        success: function (data) {
+            img.attr('src', '/getPicture?fileName=' + data);
+            img.attr('fileName', data);
 
-        progress.append(progressBar);
-        imgContainer.append(progress);
+            img.on("click", function () {
+                var editor = $("#editor-body");
+                var img = $('<img src="' + $(this).attr('src') + '" width="300" height="auto" alt="" />');
+                editor.append(img);
+                editor.trigger("input");
+            });
+        },
+        error: function (data) {
+            console.log(data);
+        }
+    });
 
-        var progressValue = $('<p class="progress-value"></p>');
-        imgContainer.append(progressValue);
+    var fileList = $(
+        '<a class="delete-file" href="javascript:void(0);">'
+        + file[0].name +
+        '</a>');
+
+    imgContainer.append(fileList);
+    fileList.on("click", function () {
+        imgContainer.remove();
+        var data = new FormData();
+        data.append("fileName", img.attr('fileName'));
 
         $.ajax({
-            type: "post",
-            url: "uploadPicture",
+            url: 'deletePicture',
+            type: 'post',
+            data: data,
             async: true,
-            data: formData,
-            cache: false,
-            processData: false,
             contentType: false,
-            xhr: function () {
-                var xhr = $.ajaxSettings.xhr();
-                if (xhr.upload) {
-                    xhr.upload.addEventListener('progress', function (e) {
-                        var percentage = parseInt(e.loaded / e.total * 100);
-                        progressValue.text(percentage + '%');
-                        progressBar.css("width", percentage + '%');
-                    });
-                }
-                return xhr;
-            },
+            processData: false,
             success: function (data) {
-                img.attr('src', '/getPicture?fileName=' + data);
-                img.attr('fileName', data);
-
-                img.on("click", function () {
+                if (data) {
+                    toast('删除图片', '删除成功', 'success');
                     var editor = $("#editor-body");
-                    var img = $('<img src="' + $(this).attr('src') + '" width="300" height="auto" alt="" />');
-                    editor.append(img);
+                    console.log(editor.html());
+                    editor.html(deleteImgTag(editor.html(), img.attr('fileName')));
                     editor.trigger("input");
-                });
+                } else {
+                    toast('删除图片', '删除失败', 'error');
+                }
             },
             error: function (data) {
-                console.log(data);
+                toast('删除图片', '网络错误！', 'error');
             }
         });
 
-        var fileList = $(
-            '<a class="delete-file" href="javascript:void(0);">'
-            + file[0].name +
-            '</a>');
+    });
 
-        imgContainer.append(fileList);
-
-        fileList.on("click", function () {
-            imgContainer.remove();
-            var data = new FormData();
-            data.append("fileName", img.attr('fileName'));
-
-            $.ajax({
-                url: 'deletePicture',
-                type: 'post',
-                data: data,
-                async: true,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    if (data) {
-                        toast('删除图片', '删除成功', 'success');
-                        var editor = $("#editor-body");
-                        console.log(editor.html());
-                        editor.html(deleteImgTag(editor.html(), img.attr('fileName')));
-                        editor.trigger("input");
-                    } else {
-                        toast('删除图片', '删除失败', 'error');
-                    }
-                },
-                error: function (data) {
-                    toast('删除图片', '网络错误！', 'error');
-                }
-            });
-
-        });
-
-        fileContainer.append(imgContainer);
-    })
+    fileContainer.append(imgContainer);
 }
 
 function deleteImgTag(content, name) {
     var regex = new RegExp("<img[^>]*" + name + "[^>]*>", "ig");
     return content.replace(regex, "");
+}
+
+
+function editorCheck() {
+    var title = $("#title");
+    var body = $("#body");
+    if(title.val().length ===0 || title.val().length > 30){
+        toast("标题长度", "请输入或缩短标题！", "notice");
+        return false;
+    }
+    if (body.val().length === 0 || body.val().length > 12000){
+        toast("正文长度", "请输入或缩短正文！", "notice");
+        return false;
+    }
+    return true;
+}
+
+function asyncTitle(title, titlePreview) {
+    title.on("input", function () {
+        titlePreview.text(title.val());
+    });
+
+    title.on("change", asyncTimeStamp);
+}
+
+function asyncBody(body, content, area) {
+    body.on("input", function () {
+        var bodyContent = body.html();
+        asyncTimeStamp();
+        content.html(bodyContent);
+        area.html(bodyContent);
+    });
+}
+
+function asyncTimeStamp() {
+    var timeStamp = $("#time-stamp");
+    timeStamp.text(getTime());
+}
+
+function getTime() {
+    var d = new Date();
+
+    return d.getFullYear() + "/" + (d.getMonth() + 1)
+        + "/" + d.getDate() + " " + d.getHours() + ":" +
+        d.getMinutes() + ":" + d.getSeconds();
 }

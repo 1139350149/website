@@ -50,6 +50,16 @@ public class UserController {
                 System.out.println("登录成功@" + username);
                 session.setAttribute("loginUser", username);
                 System.out.println(session.getAttribute("loginUser"));
+
+                String realPath = "src/main/resources/static/uploadImage/" + username;
+
+                File fileDirectory = new File(realPath);
+
+                if (!fileDirectory.isDirectory()){
+                    System.out.println(fileDirectory.mkdirs());
+                }
+
+
                 if ("1".equals(user.getCategory())) {
                     return "";
                 } else {
@@ -79,14 +89,6 @@ public class UserController {
         System.out.println(user);
         userRepository.save(user);
 
-        String realPath = "src/main/resources/static/uploadImage/" + username;
-
-        File fileDirectory = new File(realPath);
-
-        if (!fileDirectory.isDirectory()){
-            System.out.println(fileDirectory.mkdirs());
-        }
-        
         return "redirect:/login";
     }
 

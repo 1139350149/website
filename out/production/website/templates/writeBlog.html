@@ -11,7 +11,9 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/editor.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/toast.style.min.css}">
     <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
-    <script th:src="@{/javaScript/popper.min.js}" type="text/javascript" language="JavaScript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
     <script th:src="@{/javaScript/bootstrap.min.js}" type="text/javascript" language="JavaScript"></script>
     <script th:src="@{/javaScript/toast.script.js}" type="text/javascript" language="JavaScript"></script>
     <script th:src="@{/javaScript/editor.js}" type="text/javascript" language="JavaScript"></script>
@@ -23,7 +25,7 @@
     <h1 class="text-center"><strong>预览模式</strong></h1>
     <div class="container-fluid row">
         <div class="col-md-6">
-            <form th:action="@{/uploadBlog}" method="post" th:if="${mod} == 1" onsubmit="return editorCheck();">
+            <form th:action="@{/uploadBlog}" method="post" onsubmit="return editorCheck();">
                 <div class="write-area">
                     <div class="write-title">
                         <input id="title" name="title" placeholder="请输入标题（不多于30字且不为空）">
@@ -98,83 +100,6 @@
                     </div>
                 </div>
             </form>
-
-            <form th:action="@{/changingBlog}" method="post" th:if="${mod} == 2" onsubmit="return editorCheck();">
-                <div class="write-area">
-                    <div class="write-title">
-                        <input id="title" name="title" placeholder="请输入标题（不多于30字且不为空）" th:text="{changingBlog.title}">
-                    </div>
-                    <div class="write-body">
-                        <div class="editor-controller text-center" id="editor-controller">
-                            <div class="dropdown display-inline-block">
-                                <button class="dropdown-toggle editor-controller-button" type="button" id="fontSize"
-                                        data-toggle="dropdown">
-                                    <img th:src="@{/resource/fontSize.png}" alt="设置字体大小" title="设置字体大小"/>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">1</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">2</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">3</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">4</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">5</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">6</button>
-                                    <button type="button" class="dropdown-item editor-controller-button" data-command="fontSize">7</button>
-                                </div>
-                            </div>
-                            <button type="button" class="editor-controller-button" data-command="bold">
-                                <img th:src="@{/resource/bold.png}" alt="加粗" title="加粗"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="italic">
-                                <img th:src="@{/resource/italic.png}" alt="斜体" title="斜体"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="underline">
-                                <img th:src="@{/resource/underline.png}" alt="下划线" title="下划线"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="removeFormat">
-                                <img th:src="@{/resource/clearStyle.png}" alt="清除格式" title="清除格式"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="justifyFull">
-                                <img th:src="@{/resource/auto.png}" alt="自动排版" title="自动排版"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="justifyLeft">
-                                <img th:src="@{/resource/left.png}" alt="居左" title="居左"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="justifyCenter">
-                                <img th:src="@{/resource/center.png}" alt="居中" title="居中"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="justifyRight">
-                                <img th:src="@{/resource/right.png}" alt="居右" title="居右"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="insertOrderedList">
-                                <img th:src="@{/resource/ol.png}" alt="创建有序列表（数字）" title="创建有序列表（数字）"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="insertUnorderedList">
-                                <img th:src="@{/resource/ul.png}" alt="创建无序列表" title="创建无序列表"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="superscript">
-                                <img th:src="@{/resource/superscript.png}" alt="上标" title="上标"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="subscript">
-                                <img th:src="@{/resource/subscript.png}" alt="下标" title="下标"/>
-                            </button>
-                            <button type="button" class="editor-controller-button" data-command="picture">
-                                <img th:src="@{/resource/picture.png}" alt="插入图片" title="插入图片"/>
-                            </button>
-                        </div>
-                        <textarea class="display-none" id="body" name="body" placeholder="请输入正文（不多于7000字且不为空）"></textarea>
-                    </div>
-                    <div class="file-container" id="file-container">
-                        <h4 class="text-center">图片列表</h4>
-                    </div>
-                    <div class="write-body editor-body" id="editor-body" contenteditable="true"
-                         placeholder="请输入正文（不多于7000字且不为空）" th:utext="{changingBlog.body}"></div>
-
-                    <div class="submit-area">
-                        <input class="btn btn-success btn-lg" type="submit" value="发布">
-                    </div>
-                </div>
-            </form>
-
             <form class="display-none" th:action="@{/uploadPicture}" id="uploadPicForm" method="post" enctype="multipart/form-data">
                 <input id="uploadPicture" type="file" name="uploadPicture" accept="image/*">
             </form>
@@ -187,26 +112,13 @@
                 </div>
                 <div class="page-copyright">
                     <p class="author" th:text="${session.loginUser}"></p>
-                    <p class="time-stamp" id="time-stamp">
-                    </p>
+                    <p class="time-stamp" id="time-stamp"></p>
                 </div>
-                <div class="content" id="content">
-                    <p class="paragraph">
-
-                    </p>
-                </div>
-
+                <div class="content" id="content"></div>
             </div>
-
         </div>
     </div>
 </div>
-<script>
-    if ([[${mod}]] === 2){
-        $("#title").trigger("input");
-        $("#editorBody").trigger("input");
-    }
-</script>
 <footer th:include="backFooter :: backFooter"></footer>
 
 </body>
