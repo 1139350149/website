@@ -14,23 +14,29 @@ public class Blog {
     private int blogId;
 
     @NotNull
-    @Column(name="author", length = 20)
+    @Column(name = "sector")
+    private String sector;
+
+    @NotNull
+    @Column(name = "author", length = 20)
     private String author;
 
     @NotNull
-    @Column(name="title", length = 30)
+    @Column(name = "title", length = 30)
     private String title;
 
     @NotNull
-    @Column(name="body", length = 12000)
+    @Column(name = "body", length = 12000)
     private String body;
 
-    @Column(name="timeStamp", length=20)
+    @Column(name = "timeStamp", length = 20)
     private String timeStamp;
 
-    public Blog(){}
+    public Blog() {
+    }
 
-    public Blog(String author, String title, String body, String timeStamp) {
+    public Blog(String sector, String author, String title, String body, String timeStamp) {
+        this.sector = sector;
         this.author = author;
         this.title = title;
         this.body = body;
@@ -39,6 +45,10 @@ public class Blog {
 
     public int getBlogId() {
         return blogId;
+    }
+
+    public String getSector() {
+        return sector;
     }
 
     public String getAuthor() {
@@ -61,6 +71,10 @@ public class Blog {
         this.blogId = blogId;
     }
 
+    public void setSector(String sector) {
+        this.sector = sector;
+    }
+
     public void setAuthor(String author) {
         this.author = author;
     }
@@ -81,6 +95,7 @@ public class Blog {
     public String toString() {
         return "Blog{" +
                 "blogId=" + blogId +
+                ", sector='" + sector + '\'' +
                 ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +

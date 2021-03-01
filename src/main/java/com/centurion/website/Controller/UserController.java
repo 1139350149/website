@@ -29,7 +29,7 @@ public class UserController {
     @RequestMapping("/login_data")
     public String login(@RequestParam String username, @RequestParam String password, @RequestParam String validationCode
             , HttpSession session, Model model) {
-        if (!validationCode.toLowerCase().equals(session.getAttribute("JCCODE").toString().toLowerCase())) {
+        if (validationCode == null || !validationCode.toLowerCase().equals(session.getAttribute("JCCODE").toString().toLowerCase())) {
             return "login";
         }
         if (username.equals("") || password.equals("")) {

@@ -174,3 +174,12 @@ function getTime() {
         + "/" + d.getDate() + " " + d.getHours() + ":" +
         d.getMinutes() + ":" + d.getSeconds();
 }
+
+function remarkCheck(){
+    var remark = $("#remark");
+    if(remark.val().length ===0 || remark.val().length > 30){
+        toast("标题长度", "请输入或缩短标题！", "notice");
+        return false;
+    }
+    return true;
+}

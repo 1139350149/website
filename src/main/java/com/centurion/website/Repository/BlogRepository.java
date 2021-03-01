@@ -19,4 +19,6 @@ public interface BlogRepository extends JpaRepository<Blog, Long> {
     @Transactional
     @Modifying
     void updateBlogById(String title, String body, String timeStamp ,int blogId);
+
+    ArrayList<Blog> findBlogsBySector(String sector);
 }

@@ -72,3 +72,36 @@ body{
     font-size: 30px;
     font-weight: 500;
 }
+
+.sector-container{
+    border: 1px solid #cccccc;
+    margin: 20px;
+}
+
+.sector-img{
+    padding: 10px;
+    width: 60%;
+    height: auto;
+}
+
+.sector-name-container{
+    height: 50%;
+    display: inline-block;
+}
+
+.sector-name{
+    font-size: 28px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.sector-name:hover{
+    text-decoration: none;
+    color: #cccccc;
+}
+
+.sector-time{
+    font-size: 16px;
+    color: #cccccc;
+    text-align: right;
+}

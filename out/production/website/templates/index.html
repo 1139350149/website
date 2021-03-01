@@ -16,17 +16,21 @@
         <h2 class="text-center"><strong>博客专栏</strong></h2>
     </div>
 
-    <div class="blog-body">
+    <div align="center" class="edit-blog" th:if="${session.loginUser} == 'Centurion'">
+        <a th:href="@{/writeBlog(category=${category})}">
+            <img class="edit-img" th:src="@{/resource/addBlog.png}" alt="addBlog"/>
+        </a>
+    </div>
 
+    <div class="blog-body">
         <div class="blog-card" th:each="blog: ${blogAll}">
             <a class="blog-title" th:text="${blog.title}" th:href="@{/viewBlog(blogId=${blog.blogId})}"></a>
-            <p class="blog-content" th:utext="${blog.body}"></p>
+            <!--<p class="blog-content" th:utext="${blog.body}"></p>-->
             <div class="blog-info text-right">
                 <span class="author" th:text="${blog.author}"></span>
                 <span class="time-stamp" th:text="${blog.timeStamp}"></span>
             </div>
         </div>
-
     </div>
 </div>
 </body>

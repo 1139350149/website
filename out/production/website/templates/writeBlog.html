@@ -30,6 +30,9 @@
                     <div class="write-title">
                         <input id="title" name="title" placeholder="请输入标题（不多于30字且不为空）">
                     </div>
+
+                    <input id="category" class="display-none" name="category" th:value="${category}" >
+
                     <div class="write-body">
                         <div class="editor-controller text-center" id="editor-controller">
                             <div class="dropdown display-inline-block">

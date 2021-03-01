@@ -5,9 +5,11 @@
     <title></title>
     <link rel="icon" th:href="@{/resource/logo_red.png}">
 
-    <link th:href="@{/css/userBlog.css}" rel="stylesheet" type="text/css" >
-    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css" >
+    <link th:href="@{/css/userBlog.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/editor.css}" rel="stylesheet" type="text/css">
     <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/editor.js}" type="text/javascript" language="JavaScript"></script>
 </head>
 <body>
 <nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
@@ -21,6 +23,33 @@
     </div>
     <div class="content" th:utext="${blog.body}"></div>
 </div>
+<div class="container user-remarks">
+    <div class="user-remark row" th:each="remark : ${remarksAll}">
+        <div class="col-md-3 text-center float-left user-container">
+            <p class="user" th:text="${remark.userName}"></p>
+        </div>
+        <div class="col-md-9 remark-content-container">
+            <p class="remark-content" th:utext="${remark.content}"></p>
+            <p class="text-right remark-time align-text-bottom" th:text="${remark.time}"></p>
+        </div>
+    </div>
+
+    <div class="remark-edit-container">
+        <form th:action="@{/uploadRemark}" method="post" onsubmit="return remarkCheck();">
+            <div class="editor-controller text-center" id="editor-controller">
+                <button type="button" class="editor-controller-button" data-command="picture">
+                    <img th:src="@{/resource/emoji.png}" alt="插入表情" title="插入图片"/>
+                </button>
+            </div>
+            <input class="display-none" name="blogId" th:value="${blog.blogId}"/>
+            <textarea name="remark" id="remark" rows="4" placeholder="输入你的评论"> </textarea>
+            <div class="text-center">
+                <input class="btn btn-success btn-lg" type="submit" value="发布">
+            </div>
+        </form>
+    </div>
+</div>
+
 <footer th:include="backFooter :: backFooter"></footer>
 </body>
 </html>

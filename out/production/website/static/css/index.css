@@ -36,3 +36,9 @@
 .blog-area{
     min-height: 600px;
 }
+
+.edit-blog{
+    background-color: rgb(245, 246, 247);
+    padding: 20px;
+    margin: 5px auto;
+}

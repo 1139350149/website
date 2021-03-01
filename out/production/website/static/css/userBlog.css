@@ -23,3 +23,43 @@
     line-height: 30px;
     font-size: 18px;
 }
+
+.user-remark{
+    border: 1px solid #cccccc;
+}
+
+.user-container{
+    line-height: 60px;
+    background: #cfcfcf;
+
+}
+
+.user{
+    font-size: x-large;
+    vertical-align: middle;
+}
+
+.remark-content-container{
+    min-height: 70px;
+}
+
+.remark-edit-container{
+    margin: 10px;
+}
+
+.remark-content{
+    padding: 5px;
+    font-size: large;
+    min-height: 40px;
+}
+
+.remark-time{
+    padding: 10px;
+    font-weight: bolder;
+    color: #cccccc;
+}
+
+#remark{
+    margin: 10px;
+    width: 100%;
+}
