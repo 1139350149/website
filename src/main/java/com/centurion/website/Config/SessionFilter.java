@@ -51,7 +51,7 @@ public class SessionFilter implements Filter {
             if(includeUrl.equals(uri)) {
                 return false;
             }
-            if(uri.contains(".css")||uri.contains(".js")||uri.contains(".jpg")||uri.contains(".png")||uri.contains(".gif")){
+            if(uri.contains(".css")||uri.contains(".js")||uri.contains(".jpg")||uri.contains(".png")||uri.contains(".gif")||uri.contains(".map")){
                 return false;
             }
         }

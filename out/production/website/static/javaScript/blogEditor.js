@@ -3,6 +3,8 @@ function editorFunction() {
     var uploadPicture = $("#uploadPicture");
     var fileContainer = $("#file-container");
 
+    var emojiButtons = $(".emoji-button");
+
     functionButtons.on("click", function () {
         var command = $(this).data('command');
         var editor = $("#editor-body");
@@ -18,6 +20,14 @@ function editorFunction() {
             document.execCommand(command, false, null);
             editor.trigger("input");
         }
+    });
+
+    emojiButtons.on("click", function () {
+        var command = $(this).data('command');
+        var editor = $("#editor-body");
+        var img = $('<img src="../resource/emoji/' + command + '.png" width="40" height="auto" alt="" />');
+        editor.append(img);
+        editor.trigger("input");
     });
 
     uploadPicture.on("change", function () {
@@ -134,7 +144,7 @@ function deleteImgTag(content, name) {
 function editorCheck() {
     var title = $("#title");
     var body = $("#body");
-    if(title.val().length ===0 || title.val().length > 30){
+    if(title.val().length === 0 || title.val().length > 30){
         toast("标题长度", "请输入或缩短标题！", "notice");
         return false;
     }
@@ -153,7 +163,7 @@ function asyncTitle(title, titlePreview) {
     title.on("change", asyncTimeStamp);
 }
 
-function asyncBody(body, content, area) {
+function asyncPreviewBody(body, content, area) {
     body.on("input", function () {
         var bodyContent = body.html();
         asyncTimeStamp();
@@ -177,9 +187,17 @@ function getTime() {
 
 function remarkCheck(){
     var remark = $("#remark");
-    if(remark.val().length ===0 || remark.val().length > 30){
-        toast("标题长度", "请输入或缩短标题！", "notice");
+    if(remark.val().length === 0 || remark.val().length > 12000){
+        toast("评论长度", "请输入或缩短评论！", "notice");
         return false;
     }
     return true;
+}
+
+function asyncRemarkBody(body, area){
+    body.on("input", function () {
+        var bodyContent = body.html();
+        asyncTimeStamp();
+        area.html(bodyContent);
+    });
 }

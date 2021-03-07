@@ -9,5 +9,5 @@ $(document).ready(function () {
 
     asyncTitle(title, titlePreview);
 
-    asyncBody(editorBody, content, area);
+    asyncPreviewBody(editorBody, content, area);
 });

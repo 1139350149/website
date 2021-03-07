@@ -6,10 +6,13 @@
     <link rel="icon" th:href="@{/resource/logo_red.png}">
 
     <link th:href="@{/css/userBlog.css}" rel="stylesheet" type="text/css">
-    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
     <link th:href="@{/css/editor.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/common.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/css/toast.style.min.css}" rel="stylesheet" type="text/css">
     <script th:src="@{/javaScript/jquery.js}" type="text/javascript" language="JavaScript"></script>
-    <script th:src="@{/javaScript/editor.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/toast.script.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/blogEditor.js}" type="text/javascript" language="JavaScript"></script>
+    <script th:src="@{/javaScript/blog.js}" type="text/javascript" language="JavaScript"></script>
 </head>
 <body>
 <nav th:replace="backHeader :: backHeader (loginUser=${session.loginUser})"></nav>
@@ -37,12 +40,159 @@
     <div class="remark-edit-container">
         <form th:action="@{/uploadRemark}" method="post" onsubmit="return remarkCheck();">
             <div class="editor-controller text-center" id="editor-controller">
-                <button type="button" class="editor-controller-button" data-command="picture">
+                <button type="button" id="emoji-btn" class="editor-controller-button" data-toggle="collapse" href="#emoji-sector">
                     <img th:src="@{/resource/emoji.png}" alt="插入表情" title="插入图片"/>
                 </button>
             </div>
+
+            <div class="collapse" id="emoji-sector">
+                <div id="emoji-container">
+                    <button type="button" class="emoji-button" data-command="1">
+                        <img th:src="@{/resource/emoji/1.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="2">
+                        <img th:src="@{/resource/emoji/2.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="3">
+                        <img th:src="@{/resource/emoji/3.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="4">
+                        <img th:src="@{/resource/emoji/4.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="5">
+                        <img th:src="@{/resource/emoji/5.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="6">
+                        <img th:src="@{/resource/emoji/6.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="7">
+                        <img th:src="@{/resource/emoji/7.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="8">
+                        <img th:src="@{/resource/emoji/8.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="9">
+                        <img th:src="@{/resource/emoji/9.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="10">
+                        <img th:src="@{/resource/emoji/10.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="11">
+                        <img th:src="@{/resource/emoji/11.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="12">
+                        <img th:src="@{/resource/emoji/12.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="13">
+                        <img th:src="@{/resource/emoji/13.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="14">
+                        <img th:src="@{/resource/emoji/14.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="15">
+                        <img th:src="@{/resource/emoji/15.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="16">
+                        <img th:src="@{/resource/emoji/16.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="17">
+                        <img th:src="@{/resource/emoji/17.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="18">
+                        <img th:src="@{/resource/emoji/18.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="19">
+                        <img th:src="@{/resource/emoji/19.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="20">
+                        <img th:src="@{/resource/emoji/20.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="21">
+                        <img th:src="@{/resource/emoji/21.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="22">
+                        <img th:src="@{/resource/emoji/22.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="23">
+                        <img th:src="@{/resource/emoji/23.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="24">
+                        <img th:src="@{/resource/emoji/24.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="25">
+                        <img th:src="@{/resource/emoji/25.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="26">
+                        <img th:src="@{/resource/emoji/26.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="27">
+                        <img th:src="@{/resource/emoji/27.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="28">
+                        <img th:src="@{/resource/emoji/28.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="29">
+                        <img th:src="@{/resource/emoji/29.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="30">
+                        <img th:src="@{/resource/emoji/30.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="31">
+                        <img th:src="@{/resource/emoji/31.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="32">
+                        <img th:src="@{/resource/emoji/32.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="33">
+                        <img th:src="@{/resource/emoji/33.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="34">
+                        <img th:src="@{/resource/emoji/34.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="35">
+                        <img th:src="@{/resource/emoji/35.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="36">
+                        <img th:src="@{/resource/emoji/36.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="37">
+                        <img th:src="@{/resource/emoji/37.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="38">
+                        <img th:src="@{/resource/emoji/38.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="39">
+                        <img th:src="@{/resource/emoji/39.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="40">
+                        <img th:src="@{/resource/emoji/40.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="41">
+                        <img th:src="@{/resource/emoji/41.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="42">
+                        <img th:src="@{/resource/emoji/42.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="43">
+                        <img th:src="@{/resource/emoji/43.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="44">
+                        <img th:src="@{/resource/emoji/44.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="45">
+                        <img th:src="@{/resource/emoji/45.png}" title="插入图片"/>
+                    </button>
+                    <button type="button" class="emoji-button" data-command="46">
+                        <img th:src="@{/resource/emoji/46.png}" title="插入图片"/>
+                    </button>
+                </div>
+            </div>
+
             <input class="display-none" name="blogId" th:value="${blog.blogId}"/>
-            <textarea name="remark" id="remark" rows="4" placeholder="输入你的评论"> </textarea>
+            <textarea class="display-none" name="remark" id="remark"></textarea>
+
+            <div class="write-body editor-body remark-body" id="editor-body" contenteditable="true"
+                 placeholder="输入你的评论"></div>
             <div class="text-center">
                 <input class="btn btn-success btn-lg" type="submit" value="发布">
             </div>

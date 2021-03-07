@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name="EmailRegisterCode")
 public class EmailRegisterCode {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String registerCode;
 
     @Column(name="email")

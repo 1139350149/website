@@ -25,6 +25,7 @@
 }
 
 .user-remark{
+    margin: 30px 0;
     border: 1px solid #cccccc;
 }
 
@@ -40,7 +41,7 @@
 }
 
 .remark-content-container{
-    min-height: 70px;
+    min-height: 50px;
 }
 
 .remark-edit-container{
@@ -50,10 +51,11 @@
 .remark-content{
     padding: 5px;
     font-size: large;
-    min-height: 40px;
+    min-height: 20px;
 }
 
 .remark-time{
+    margin: 0;
     padding: 10px;
     font-weight: bolder;
     color: #cccccc;

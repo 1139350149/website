@@ -49,14 +49,15 @@ public class BlogController {
      */
     @RequestMapping("/uploadBlog")
     String uploadBlog(@RequestParam String category ,@RequestParam String title, @RequestParam String body, HttpSession session) {
-        String author = (String) session.getAttribute("loginUser");
+        if (title.length() > 0 && title.length() <= 30 && body.length() > 0 && body.length() <= 12000) {
+            String author = (String) session.getAttribute("loginUser");
 
-        Date date = new Date();
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-        Blog temp = new Blog(category, author, title, body, timeStamp);
+            Date date = new Date();
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+            Blog temp = new Blog(category, author, title, body, timeStamp);
 
-        blogRepository.save(temp);
-
+            blogRepository.save(temp);
+        }
         return "redirect:/sector?category=" + category;
     }
     /*

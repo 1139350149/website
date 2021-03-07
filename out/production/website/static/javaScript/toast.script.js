@@ -170,6 +170,6 @@ function toast(title, message, type){
         timeout:2000,
         sticky:false,
         has_progress:true,
-        rtl:false,
+        rtl:false
     });
 }

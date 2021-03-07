@@ -18,13 +18,14 @@ public class RemarkController {
 
     @RequestMapping("/uploadRemark")
     public String uploadRemark(@RequestParam String blogId, @RequestParam String remark, HttpSession httpSession){
-        String user = (String)httpSession.getAttribute("loginUser");
-        Date date = new Date();
-        String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+        if (remark.length() > 0 && remark.length() < 12001) {
+            String user = (String) httpSession.getAttribute("loginUser");
+            Date date = new Date();
+            String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
 
-        Remark remarkTemp = new Remark(Integer.valueOf(blogId), user, remark, timeStamp);
-        remarkRepository.save(remarkTemp);
-
+            Remark remarkTemp = new Remark(Integer.valueOf(blogId), user, remark, timeStamp);
+            remarkRepository.save(remarkTemp);
+        }
         return "redirect:/viewBlog?blogId=" + blogId;
     }
 }

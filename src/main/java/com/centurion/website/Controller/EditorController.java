@@ -85,11 +85,14 @@ public class EditorController {
     public byte[] getPicture(@RequestParam("fileName") String fileName, HttpSession session) throws Exception {
         File file = new File(IMAGEFILEPATH + session.getAttribute("loginUser") + '/' + fileName);
         System.out.println(file);
-        FileInputStream inputStream = new FileInputStream(file);
-        byte[] bytes = new byte[inputStream.available()];
-        inputStream.read(bytes, 0, inputStream.available());
-        inputStream.close();
-        return bytes;
+        if (file.exists()) {
+            FileInputStream inputStream = new FileInputStream(file);
+            byte[] bytes = new byte[inputStream.available()];
+            inputStream.read(bytes, 0, inputStream.available());
+            inputStream.close();
+            return bytes;
+        }
+        return new byte[1];
     }
 
 }

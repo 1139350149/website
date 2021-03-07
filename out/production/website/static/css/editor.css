@@ -1,28 +1,28 @@
-
-.editor-body{
+.editor-body {
     background: #ffffff;
     padding: 10px;
     outline: none;
-    border-radius: 5px ;
+    border-radius: 5px;
     min-height: 400px;
     font-size: 24px;
     user-modify: read-write-plaintext-only;
+    -webkit-user-modify: read-write;
 }
 
-.editor-body:empty:before{
+.editor-body:empty:before {
     content: attr(placeholder);
     color: #ccc;
     font-size: 16px;
 }
 
-.editor-controller{
+.editor-controller {
     padding: 5px 0;
     margin: 5px 0;
     background: #ffffff;
 }
 
-.editor-controller-button{
-    width: 20px;
+.editor-controller-button {
+    width: 30px;
     border: none;
     background-color: #ffffff;
     padding: 2px 2px;
@@ -30,39 +30,39 @@
     transition: box-shadow .3s ease-in-out, background .3s ease-in-out;
 }
 
-.editor-controller-button:hover{
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, .25) ;
+.editor-controller-button:hover {
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, .25);
     background-color: #cccccc;
 }
 
-.editor-controller-button > img{
+.editor-controller-button > img {
     width: 80%;
 }
 
-.file-container{
+.file-container {
     padding: 10px;
     margin: 5px 20px;
     background: #ffffff;
     border: none;
-    border-radius: 5px ;
+    border-radius: 5px;
 }
 
-.delete-file{
+.delete-file {
     display: block;
     font-size: 24px;
     color: rgba(70, 130, 180, 0.4);
 }
 
-.delete-file:after{
+.delete-file:after {
     content: ' X';
 }
 
-.delete-file:hover{
+.delete-file:hover {
     color: rgba(255, 215, 0, 0.6);
     text-decoration: none;
 }
 
-.img{
+.img {
     width: 80%;
     height: auto;
     margin: 10px 0;
@@ -70,13 +70,41 @@
     cursor: pointer;
 }
 
-.img-container{
+.img-container {
     width: 25%;
     display: inline-block;
     margin: 5px 10px;
     padding: 5px;
 }
 
-.progress-value{
+.progress-value {
     font-size: 24px;
+}
+
+#emoji-container {
+    margin: 0 auto;
+    background-color: #eeeeee;
+    width: 417px;
+    height: 200px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.emoji-button {
+    width: 68px;
+    background: transparent;
+    margin: 4px;
+    height: auto;
+    border: none;
+    display: inline-block;
+}
+
+.emoji-button > img {
+    padding: 2px;
+    width: 40px;
+    height: auto;
+}
+
+.emoji-button:hover {
+    background: #333333;
 }

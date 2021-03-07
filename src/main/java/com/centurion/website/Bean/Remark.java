@@ -22,7 +22,7 @@ public class Remark {
     private String userName;
 
     @NotNull
-    @Column(name = "content")
+    @Column(name = "content", length = 12000)
     private String content;
 
     @NotNull

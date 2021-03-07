@@ -8,7 +8,7 @@ $(document).ready(function () {
 
     editorFunction();
     asyncTitle(title, titlePreview);
-    asyncBody(editorBody, content, area);
+    asyncPreviewBody(editorBody, content, area);
     recoverPictureData(editorBody, fileContainer);
 
     title.trigger("input");
